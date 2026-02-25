@@ -24,7 +24,12 @@ add_price_to_product({ 'type': 'Tofu slices' }, 2.20) # returns
 
 def add_price_to_product(product, price):
     # Your code here
-    pass
+    # Return the 'as-is' empty product if it is an empty dict.
+    if len(product) == 0:
+        return product
+    # Add the price key and the price parameter as its value.
+    product['price'] = price
+    return product
 
 
 @run_test
@@ -98,7 +103,12 @@ ignored and the product returned unchanged!
 
 def add_attribute_to_product(product, key, value):
     # Your code here
-    pass
+    # Check if the key parameter is a valid data type. Return the product 'as-is' if not
+    if not isinstance(key, (str, int, float, bool)):
+        return product
+    # Add the new key and value to the product from the key and value parameters
+    product[key] = value
+    return product
 
 
 # ❗ Remember to change @skip_test to @run_test!
@@ -212,7 +222,16 @@ returns
 
 def create_northcoder(name, year_of_birth):
     # Your code here
-    pass
+    # Instantiate a new dictionary with name, age and language keys
+    northcoder = {
+        'name': name,
+        # Age is the year of birth subtracted from 2023 unless 
+        # year_of_birth > 2023 in which case error is shown
+        'age': 2023 - year_of_birth if year_of_birth <= 2023 else 'error',
+        # Language is Python by default
+        'language': 'Python'
+    }
+    return northcoder
 
 
 @skip_test
@@ -267,7 +286,13 @@ Returns
 
 def delete_many_passwords(users):
     # Your code here
-    pass
+    # Iterate through each user in the list
+    for user in users:
+        # Delete the password key if it exists. Including None as the second 
+        # parameter deals with user dictionaries that do not contain the 
+        # password key
+        user.pop('password', None)
+    return users
 
 
 @skip_test
@@ -354,7 +379,7 @@ get_northcoders_names(northcoders) # returns ['Callum', 'Carrie']
 
 def get_northcoders_names(northcoders):
     # Your code here
-    pass
+    return [northcoder['name'] for northcoder in northcoders if 'name' in northcoder]
 
 
 @skip_test
@@ -421,7 +446,7 @@ get_user_pet_age(user) # returns 4
 
 def get_user_pet_age(user):
     # Your code here
-    pass
+    return user['pet']['age'] if 'pet' in user and 'age' in user['pet'] else None
 
 
 @skip_test
