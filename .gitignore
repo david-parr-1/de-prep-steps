@@ -22,3 +22,5 @@ terraform/init.sh
 zen.txt
 *.tfstate*
 test_api/plan_playground.py
+01_git_exercises/get-last-10-words.sh
+01_git_exercises/get-word-count.sh

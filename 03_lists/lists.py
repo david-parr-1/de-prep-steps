@@ -20,7 +20,8 @@ get_even_nums([1, 2, 3]) # returns [2]
 
 def get_even_nums(nums):
     # your code here
-    pass
+    even_nums = [num for num in nums if num % 2 == 0]
+    return even_nums
 
 
 @run_test
@@ -64,7 +65,8 @@ get_items_longer_than(['a','bb','ccc'], 4) # returns [];
 
 def get_items_longer_than(strs, max_len):
     # your code here
-    pass
+    long_items = [item for item in strs if len(item) > max_len]
+    return long_items
 
 
 # ❗ Remember to change @skip_test to @run_test!
@@ -116,7 +118,8 @@ get_sandwich_filling(['a', 'b', 'c', 'd']) # returns ['b', 'c']
 
 def get_sandwich_filling(sandwich):
     # your code here
-    pass
+    sandwich_filling = sandwich[1:-1]
+    return sandwich_filling
 
 
 @skip_test
@@ -163,7 +166,8 @@ remove_item([3], 0) # returns []
 
 def remove_item(items, n):
     # your code here
-    pass
+    new_items = [*items[0:n], *items[n + 1:]]
+    return new_items
 
 
 @skip_test
@@ -217,7 +221,8 @@ merge_lists([1, 2], [3, 4]) # returns [1, 2, 3, 4]
 
 def merge_lists(list1, list2):
     # your code here
-    pass
+    merged_list = [*list1, *list2]
+    return merged_list
 
 
 @skip_test
@@ -280,7 +285,12 @@ present in two lists
 
 def is_item_omnipresent(lists, item):
     # your code here
-    pass
+    item_is_omnipresent = True
+    for list in lists:
+        if not item in list:
+            item_is_omnipresent = False
+            break
+    return item_is_omnipresent
 
 
 @skip_test
@@ -331,7 +341,15 @@ flatten_list_by_one([[1], [2], [[3, 4]]])  # returns [1, 2, [3, 4]]
 
 def flatten_list_by_one(nested_lists):
     # your code here
-    pass
+    flattened_list = []
+    for element in nested_lists:
+        if isinstance(element, list):
+            print(f'{element} is a list')
+            flattened_list.extend(element)
+        else:
+            print(f'{element} is NOT a list')
+            flattened_list.append(element)
+    return flattened_list
 
 
 @skip_test
