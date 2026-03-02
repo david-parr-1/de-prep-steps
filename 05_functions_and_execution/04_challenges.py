@@ -13,7 +13,8 @@ from test_api.checks import run_test, skip_test, format_err_msg
 #  its arguments
 # It should return True if the dictionary contains the provided key,
 #  False otherwise
-
+def check_if_key_exists(dict, key_to_check):
+    return True if key_to_check in dict else False
 
 @run_test
 def test_check_if_key_exists():
@@ -32,9 +33,12 @@ def test_check_if_key_exists():
 # Write a function, create_dict, that takes a list consisting of two elements
 #  representing a key / value pair as its argument
 # It should return a dictionary with a single key based on the input
+def create_dict(input_list):
+    return {
+        input_list[0]: input_list[1]
+    }
 
-
-@skip_test
+@run_test
 def test_create_dict():
     assert create_dict(["name", "shaq"]) == {"name": "shaq"}, format_err_msg(
         {"name": "shaq"}, create_dict(["name", "shaq"])
@@ -53,9 +57,10 @@ def test_create_dict():
 # Write a function, get_first_n_items, that takes two arguments, a list and
 #  a number 'n'
 # It should return a new list containing the first 'n' items of the given list
+def get_first_n_items(input_list, n):
+    return input_list[:n]
 
-
-@skip_test
+@run_test
 def test_get_first_n_items():
     assert get_first_n_items(["a", "b", "c", "d"], 2) == ["a", "b"], format_err_msg(
         ["a", "b"], get_first_n_items(["a", "b", "c", "d"], 2)
@@ -81,9 +86,20 @@ def test_get_first_n_items():
 # It should return the corresponding arrow ("←", "→", "↑", "↓")
 # You don't need to utilise an dictionary here, but think about how you
 #  could do so
+def create_arrow(direction):
+    arrows = {
+        "left": 8592,
+        "right": 8594,
+        "up": 8593,
+        "down": 8595
+    }
+
+    arrow_code = arrows[direction]
+
+    return chr(arrow_code)
 
 
-@skip_test
+@run_test
 def test_create_arrow():
     assert create_arrow("left") == "←", format_err_msg("←", create_arrow("left"))
     assert create_arrow("right") == "→", format_err_msg("→", create_arrow("right"))
@@ -96,9 +112,11 @@ def test_create_arrow():
 #  index value
 # It should return a new list where the item that was previously at the
 #  given index is now at the end of the list
+def move_item_to_end(input_list, index):
+    input_list.append(input_list.pop(index))
+    return input_list
 
-
-@skip_test
+@run_test
 def test_move_item_to_end():
     assert move_item_to_end(["a", "b", "c"], 0) == ["b", "c", "a"], format_err_msg(
         ["b", "c", "a"], move_item_to_end(["a", "b", "c"], 0)
@@ -134,9 +152,10 @@ def test_move_item_to_end():
 # }
 # The user's age should be increased by 1 to reflect their recent birthday
 # NOTE: This function does NOT need to return anything!
+def update_user_age(user):
+    user['personal_details']['age'] += 1
 
-
-@skip_test
+@run_test
 def test_update_user_age():
     user1 = {
         "admin": False,
@@ -206,9 +225,10 @@ def test_update_user_age():
 #  French word as an argument
 # It should return True if it is an infinitive verb, and False otherwise
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
+def check_infinitive(word):
+    return True if word[-2:] in ("re", "ir", "er") else False
 
-
-@skip_test
+@run_test
 def test_check_infinitive():
     assert check_infinitive("manger") is True, format_err_msg(
         True, check_infinitive("manger")
@@ -251,9 +271,10 @@ def test_check_infinitive():
 #  an argument
 # It should return a list containing all strings ending with an 's' from the
 #  input (retaining the order)
+def collect_plurals(string_list):
+    return [string for string in string_list if string[-1] == "s"]
 
-
-@skip_test
+@run_test
 def test_collect_plurals():
     assert collect_plurals(["dogs", "cat", "apples", "kittens", "kiwi"]) == [
         "dogs",
@@ -279,9 +300,10 @@ def test_collect_plurals():
 # The 'admin' key will have a boolean value
 # You should return a list of user objects each with the 'admin' key set
 #  to True
+def make_all_admins(users):
+        return [{**person, 'admin': True} for person in users]
 
-
-@skip_test
+@run_test
 def test_make_all_admins():
     users = [
         {"name": "Barry", "admin": False},
