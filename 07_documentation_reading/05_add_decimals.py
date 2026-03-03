@@ -5,6 +5,7 @@ sys.path.append(os.getcwd())
 
 from test_api.checks import run_test, format_err_msg
 # DO NOT CHANGE CODE ABOVE THIS LINE
+from decimal import *
 
 
 def add_decimals(fractions_to_add):
@@ -26,7 +27,9 @@ def add_decimals(fractions_to_add):
     https://docs.python.org/3/library/decimal.html#module-decimal
     """
     
-    pass
+    dec_list = [Decimal(number) for number in fractions_to_add]
+    return str(sum(dec_list))
+
 
 
 @run_test
