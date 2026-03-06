@@ -15,7 +15,7 @@ from test_api.checks import run_test, skip_test, format_err_msg
 def at_least_5_digits():
     # Your pattern should match a string or substring containing at least 5
     #  of the digits from 1 to 9 only
-    YOUR_REGEX_HERE = 'x'
+    YOUR_REGEX_HERE = '\d{5}'
     # replace 'x' with an appropriate regular expression pattern
     return re.compile(YOUR_REGEX_HERE)
 
@@ -38,7 +38,7 @@ def test_matches_5_digits_at_start_of_string():
         format_err_msg(f"match object", at_least_5_digits().match("45613837"))
 
 
-@skip_test
+@run_test
 def test_matches_5_digits_contained_within_string():
     assert len(at_least_5_digits().findall("45613sggs83767xy")) == 2, \
         format_err_msg(2, len(at_least_5_digits().findall("45613sggs83767xy")))
