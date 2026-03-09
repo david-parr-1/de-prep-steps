@@ -26,7 +26,10 @@ def match_unique_digits(text):
     - 493710 True
     - 00 False
     """
-    pass
+    regex_string = r'\d{1}'
+    regex = re.compile(regex_string)
+    digits_found = regex.findall(text)
+    return True if len(digits_found) == len(set(digits_found)) else False
 
 
 @run_test
@@ -37,7 +40,7 @@ def test_match_unique_digits_returns_true_when_number_contains_unique_digits():
         format_err_msg(True, match_unique_digits("493710"))
 
 
-@skip_test
+@run_test
 def test_match_unique_digits_returns_false_when_number_does_not_contain_unique_digits():
     assert not match_unique_digits("1233"), \
         format_err_msg(False, match_unique_digits("1233"))

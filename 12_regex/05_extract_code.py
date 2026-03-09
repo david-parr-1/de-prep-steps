@@ -24,8 +24,8 @@ def extract_code(text):
     You should extract that number from the string and return it as
     an integer
     """
-    regex = re.compile(r'\d*')
-    return regex.search()
+    regex = re.compile(r'\d+')
+    return int(regex.search(text).group())
 
 
 @run_test

@@ -23,7 +23,9 @@ def sum_nums(text):
 
     If there are no numbers, you should return 0
     """
-    pass
+    regex = re.compile(r'\d+')
+    nums = [*map(int, regex.findall(text))]
+    return sum(nums)
 
 
 @run_test
