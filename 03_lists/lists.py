@@ -166,7 +166,8 @@ remove_item([3], 0) # returns []
 
 def remove_item(items, n):
     # your code here
-    new_items = [*items[0:n], *items[n + 1:]]
+    # new_items = [*items[0:n], *items[n + 1:]]
+    new_items = [item for i, item in enumerate(items) if i != n]
     return new_items
 
 
