@@ -286,12 +286,16 @@ present in two lists
 
 def is_item_omnipresent(lists, item):
     # your code here
+    """
     item_is_omnipresent = True
     for list in lists:
         if not item in list:
             item_is_omnipresent = False
             break
     return item_is_omnipresent
+    """
+    
+    return (all([True if item in list else False for list in lists]))
 
 
 @run_test
