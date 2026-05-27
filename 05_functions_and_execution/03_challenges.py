@@ -76,8 +76,10 @@ def test_create_profile_description():
 
 
 def read_traffic_light(light_colour):
-    light_colour = light_colour.lower()
-    match light_colour:
+    # light_colour is changed to lower case to reduce the number of potential comparisons
+    # that need to be executed
+    light_colour_lower = light_colour.lower()
+    match light_colour_lower:
         case "green":
             return "GO!"
         case "amber":
