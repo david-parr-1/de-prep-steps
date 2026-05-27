@@ -12,7 +12,9 @@ from test_api.checks import run_test, skip_test, format_err_msg
 # This function should take a list as an argument and return True if the list
 #  is empty, False otherwise.
 def is_empty_list(input_list):
-    return True if len(input_list) == 0 else False
+    # bool() function returns False if the list is empty so use not to invert the logic to return
+    # opposite values (True if empty, False if not)
+    return not bool(input_list)
 
 
 @run_test
