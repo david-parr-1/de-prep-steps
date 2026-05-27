@@ -116,6 +116,7 @@ def test_read_traffic_light():
 # This function should take any number of arguments and return the number of
 #  arguments passed into the function
 def how_many_arguments(*args):
+    # *args are passed into the function as a tuple and can be counted using the len() function
     return len(args)
 
 
