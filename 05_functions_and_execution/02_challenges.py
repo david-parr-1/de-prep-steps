@@ -94,7 +94,8 @@ def test_capitalise_first_letter():
 
 
 def is_in_the_20th_century(year):
-    return True if year > 1900 and year <= 2000 else False
+    # return True if year > 1900 and year <= 2000 else False
+    return True if 1900 < year <= 2000 else False
 
 
 @run_test
