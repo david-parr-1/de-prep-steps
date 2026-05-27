@@ -226,7 +226,7 @@ def test_update_user_age():
 # It should return True if it is an infinitive verb, and False otherwise
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
 def check_infinitive(word):
-    return True if word[-2:] in ("re", "ir", "er") else False
+    return True if word[-2:] in {"re", "ir", "er"} else False
 
 @run_test
 def test_check_infinitive():
